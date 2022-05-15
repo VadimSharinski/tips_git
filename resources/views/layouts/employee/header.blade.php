@@ -6,7 +6,7 @@
                     </div>
                     <div class="search-bar flex-grow-1">
                         <div class="position-relative search-bar-box">
-                            <input type="text" class="form-control search-control" placeholder="Type to search..."> <span class="position-absolute top-50 search-show translate-middle-y"><i class='bx bx-search'></i></span>
+                            <input type="text" class="form-control search-control" placeholder="@lang('main.search')"> <span class="position-absolute top-50 search-show translate-middle-y"><i class='bx bx-search'></i></span>
                             <span class="position-absolute top-50 search-close translate-middle-y"><i class='bx bx-x'></i></span>
                         </div>
                     </div>
@@ -328,18 +328,18 @@
                             <img src="assets/images/avatars/avatar-1.png" class="user-img" alt="user avatar">
                             <div class="user-info ps-3">
                                 <p class="user-name mb-0">{{auth()->user()->first_name . ' ' . auth()->user()->last_name}}</p>
-                                <p class="designattion mb-0">Employee</p>
+                                <p class="designattion mb-0">@lang('main.employee')</p>
                             </div>
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end">
-                            <li><a class="dropdown-item" href="{{ url('employee-profile') }}"><i class="bx bx-user"></i><span>Profile</span></a>
+                            <li><a class="dropdown-item" href="{{ route('employee.profile') }}"><i class="bx bx-user"></i><span>@lang('main.profile')</span></a>
                             </li>
-                            <li><a class="dropdown-item" href="javascript:;"><i class="bx bx-cog"></i><span>Settings</span></a>
+                            <li><a class="dropdown-item" href="javascript:;"><i class="bx bx-cog"></i><span>@lang('main.settings')</span></a>
                             </li>
                             <li>
                                 <div class="dropdown-divider mb-0"></div>
                             </li>
-                            <li><a class="dropdown-item" href=""><i class='bx bx-log-out-circle'></i><span>Logout</span></a>
+                            <li><a class="dropdown-item" href="{{ route('employee.logout') }}"><i class='bx bx-log-out-circle'></i><span>@lang('main.logout')</span></a>
                             </li>
                         </ul>
                     </div>

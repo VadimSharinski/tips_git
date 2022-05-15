@@ -40,6 +40,19 @@
                         </li>
                         <li class="nav-item"> <a class="nav-link" href="#"><i class='bx bx-microphone me-1'></i>Contact</a>
                         </li>
+                        <li>
+                            <div class="col">
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-outline-secondary">@lang('main.current_lang')</button>
+                                    <button type="button" class="btn btn-outline-secondary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">	<span class="visually-hidden">Toggle Dropdown</span>
+                                    </button>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item" href="{{ route('changeLocale', 'en') }}">@lang('main.en')</a></li>
+                                        <li><a class="dropdown-item" href="{{ route('changeLocale', 'ru') }}">@lang('main.ru')</a>
+                                    </ul>
+                                </div>
+                            </div>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -55,18 +68,18 @@
                             <div class="card-body">
                                 <div class="border p-4 rounded">
                                     <div class="text-center">
-                                        <h3 class="">Sign in</h3>
-                                        <p>Don't have an account yet? <a href="{{ url('authentication-signup-with-header-footer') }}">Sign up here</a>
+                                        <h3 class="">@lang('main.sign_in')</h3>
+                                        <p>@lang('main.have_account_signin') <a href="{{ url('authentication-signup-with-header-footer') }}">@lang('main.sign_up_here')</a>
                                         </p>
                                     </div>
                                     <div class="d-grid">
                                         <a class="btn my-4 shadow-sm btn-white" href="javascript:;"> <span class="d-flex justify-content-center align-items-center">
                               <img class="me-2" src="assets/images/icons/search.svg" width="16" alt="Image Description">
-                              <span>Sign in with Google</span>
+                              <span> @lang('main.sign_in_google') </span>
                                                 </span>
-                                        </a> <a href="javascript:;" class="btn btn-facebook"><i class="bx bxl-facebook"></i>Sign in with Facebook</a>
+                                        </a> <a href="javascript:;" class="btn btn-facebook"><i class="bx bxl-facebook"></i>@lang('main.sign_in_facebook')</a>
                                     </div>
-                                    <div class="login-separater text-center mb-4"> <span>OR SIGN IN WITH EMAIL</span>
+                                    <div class="login-separater text-center mb-4"> <span> @lang('main.sign_in_email') </span>
                                         <hr/>
                                     </div>
                                     @if ($errors->any())
@@ -88,11 +101,11 @@
                                     <div class="form-body">
                                         <form class="row g-3">
                                             <div class="col-12">
-                                                <label for="inputEmailAddress" class="form-label">Email Address</label>
+                                                <label for="inputEmailAddress" class="form-label">@lang('main.email_address')</label>
                                                 <input type="email" class="form-control" name="email" placeholder="Email Address">
                                             </div>
                                             <div class="col-12">
-                                                <label for="inputChoosePassword" class="form-label">Enter Password</label>
+                                                <label for="inputChoosePassword" class="form-label">@lang('main.enter_password')</label>
                                                 <div class="input-group" id="show_hide_password">
                                                     <input type="password" class="form-control border-end-0" name="password" placeholder="Enter Password"> <a href="javascript:;" class="input-group-text bg-transparent"><i class='bx bx-hide'></i></a>
                                                 </div>
@@ -103,11 +116,11 @@
 {{--                                                    <label class="form-check-label" for="flexSwitchCheckChecked">Remember Me</label>--}}
 {{--                                                </div>--}}
 {{--                                            </div>--}}
-                                            <div class="col-md-6 text-end">	<a href="{{ url('authentication-forgot-password') }}">Forgot Password ?</a>
+                                            <div class="col-md-6 text-end">	<a href="{{ url('authentication-forgot-password') }}"> @lang('main.forgot_password') </a>
                                             </div>
                                             <div class="col-12">
                                                 <div class="d-grid">
-                                                    <button type="submit" class="btn btn-primary"><i class="bx bxs-lock-open"></i>Sign in</button>
+                                                    <button type="submit" class="btn btn-primary"><i class="bx bxs-lock-open"></i>@lang('main.sign_in')</button>
                                                 </div>
                                             </div>
                                         </form>

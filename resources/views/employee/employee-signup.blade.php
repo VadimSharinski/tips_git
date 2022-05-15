@@ -25,21 +25,30 @@
     <header class="login-header shadow">
         <nav class="navbar navbar-expand-lg navbar-light bg-white rounded fixed-top rounded-0 shadow-sm">
             <div class="container-fluid">
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                        data-bs-target="#navbarSupportedContent1" aria-controls="navbarSupportedContent1"
-                        aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent1" aria-controls="navbarSupportedContent1" aria-expanded="false" aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent1">
                     <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="#"><i
-                                    class='bx bx-home-alt me-1'></i>Home</a>
+                        <li class="nav-item"> <a class="nav-link active" aria-current="page" href="#"><i class='bx bx-home-alt me-1'></i>Home</a>
                         </li>
-                        <li class="nav-item"><a class="nav-link" href="#"><i class='bx bx-user me-1'></i>About</a>
+                        <li class="nav-item"> <a class="nav-link" href="#"><i class='bx bx-user me-1'></i>About</a>
                         </li>
-                        <li class="nav-item"><a class="nav-link" href="#"><i class='bx bx-category-alt me-1'></i>Features</a>
+                        <li class="nav-item"> <a class="nav-link" href="#"><i class='bx bx-category-alt me-1'></i>Features</a>
                         </li>
-                        <li class="nav-item"><a class="nav-link" href="#"><i
-                                    class='bx bx-microphone me-1'></i>Contact</a>
+                        <li class="nav-item"> <a class="nav-link" href="#"><i class='bx bx-microphone me-1'></i>Contact</a>
+                        </li>
+                        <li>
+                            <div class="col">
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-outline-secondary">@lang('main.current_lang')</button>
+                                    <button type="button" class="btn btn-outline-secondary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">	<span class="visually-hidden">Toggle Dropdown</span>
+                                    </button>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item" href="{{ route('changeLocale', 'en') }}">@lang('main.en')</a></li>
+                                        <li><a class="dropdown-item" href="{{ route('changeLocale', 'ru') }}">@lang('main.ru')</a>
+                                    </ul>
+                                </div>
+                            </div>
                         </li>
                     </ul>
                 </div>
@@ -55,22 +64,22 @@
                         <div class="card-body">
                             <div class="border p-4 rounded">
                                 <div class="text-center">
-                                    <h3 class="">Sign Up</h3>
-                                    <p>Already have an account? <a
-                                            href="{{ url('authentication-signin-with-header-footer') }}">Sign in
-                                            here</a>
+                                    <h3 class="">@lang('main.sign_up')</h3>
+                                    <p>@lang('main.have_account_signup') <a
+                                            href="{{ url('authentication-signin-with-header-footer') }}">
+                                            @lang('main.sign_in_here')</a>
                                     </p>
                                 </div>
                                 <div class="d-grid">
                                     <a class="btn my-4 shadow-sm btn-white" href="javascript:;"> <span
                                             class="d-flex justify-content-center align-items-center">
                               <img class="me-2" src="assets/images/icons/search.svg" width="16" alt="Image Description">
-                              <span>Sign Up with Google</span>
+                              <span>@lang('main.sign_up_google')</span>
                                                 </span>
-                                    </a> <a href="javascript:;" class="btn btn-facebook"><i class="bx bxl-facebook"></i>Sign
-                                        Up with Facebook</a>
+                                    </a> <a href="javascript:;" class="btn btn-facebook"><i class="bx bxl-facebook"></i>
+                                        @lang('main.sign_up_facebook')</a>
                                 </div>
-                                <div class="login-separater text-center mb-4"><span>OR SIGN UP WITH EMAIL</span>
+                                <div class="login-separater text-center mb-4"><span>@lang('main.sign_up_email')</span>
                                     <hr/>
                                 </div>
                                 @if ($errors->any())
@@ -87,37 +96,36 @@
                                     <div class="form-body">
                                         <form class="row g-3">
                                             <div class="col-sm-12">
-                                                <label for="inputFirstName" class="form-label">First Name</label>
+                                                <label for="inputFirstName" class="form-label">@lang('main.first_name')</label>
                                                 <input type="text" class="form-control" name="first_name"
                                                        placeholder="Walter" value="{{old('first_name')}}">
                                             </div>
                                             <div class="col-sm-12">
-                                                <label for="inputLastName" class="form-label">Last Name</label>
+                                                <label for="inputLastName" class="form-label">@lang('main.last_name')</label>
                                                 <input type="text" class="form-control" name="last_name"
                                                        placeholder="White" value="{{old('last_name')}}">
                                             </div>
-                                            {{--                                            <div class="col-12">--}}
-                                            {{--                                                <label for="inputSelectCountry" class="form-label">Country</label>--}}
-                                            {{--                                                <select class="form-select" name="country" aria-label="Default select example">--}}
-                                            {{--                                                    <option selected>India</option>--}}
-                                            {{--                                                    <option value="1">United Kingdom</option>--}}
-                                            {{--                                                    <option value="2">America</option>--}}
-                                            {{--                                                    <option value="3">Dubai</option>--}}
-                                            {{--                                                </select>--}}
-                                            {{--                                            </div>--}}
                                             <div class="col-12">
-                                                <label for="inputPhone" class="form-label">Phone</label>
+                                                <label for="inputSelectCountry" class="form-label">@lang('main.country')</label>
+                                                <select class="form-select" name="country_id" aria-label="Default select example">
+                                                    @foreach($countries as $country)
+                                                    <option value="{{ $country->id}}">{{ trans('main.' . $country->name) }}</option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                            <div class="col-12">
+                                                <label for="inputPhone" class="form-label">@lang('main.phone')</label>
                                                 <input type="text" class="form-control" name="phone"
-                                                       placeholder="+1 XXX-XXX-XXXX" maxlength="12"
+                                                       placeholder="XX-XXX-XXX-XXXX" maxlength="12"
                                                        value="{{old('phone')}}">
                                             </div>
                                             <div class="col-12">
-                                                <label for="inputEmailAddress" class="form-label">Email Address</label>
+                                                <label for="inputEmailAddress" class="form-label">@lang('main.email_address')</label>
                                                 <input type="email" class="form-control" name="email"
                                                        placeholder="example@user.com" value="{{old('email')}}">
                                             </div>
                                             <div class="col-12">
-                                                <label for="inputChoosePassword" class="form-label">Password</label>
+                                                <label for="inputChoosePassword" class="form-label">@lang('main.password')</label>
                                                 <div class="input-group" id="show_hide_password">
                                                     <input type="password" class="form-control border-end-0"
                                                            name="password" placeholder="Enter Password"> <a
@@ -126,11 +134,11 @@
                                                 </div>
                                             </div>
                                             <div class="col-12">
-                                                <label for="inputChoosePassword" class="form-label">Confirm
-                                                    Password</label>
+                                                <label for="inputChoosePassword" class="form-label">
+                                                    @lang('main.confirm_password')</label>
                                                 <div class="input-group" id="show_hide_password">
                                                     <input type="password" class="form-control border-end-0"
-                                                           name="password_confirmation" placeholder="Enter Password"> <a
+                                                           name="password_confirmation" placeholder="@lang('main.enter_password')"> <a
                                                         href="javascript:;" class="input-group-text bg-transparent"><i
                                                             class='bx bx-hide'></i></a>
                                                 </div>
@@ -138,14 +146,14 @@
                                             <div class="col-12">
                                                 <div class="form-check form-switch">
                                                     <input class="form-check-input" type="checkbox" name="agreement">
-                                                    <label class="form-check-label" for="flexSwitchCheckChecked">I read
-                                                        and agree to Terms & Conditions</label>
+                                                    <label class="form-check-label" for="flexSwitchCheckChecked">
+                                                        @lang('main.terms')</label>
                                                 </div>
                                             </div>
                                             <div class="col-12">
                                                 <div class="d-grid">
                                                     <button type="submit" class="btn btn-primary"><i
-                                                            class='bx bx-user'></i>Sign up
+                                                            class='bx bx-user'></i>@lang('main.sign_up')
                                                     </button>
                                                 </div>
                                             </div>

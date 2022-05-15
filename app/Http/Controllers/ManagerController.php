@@ -33,6 +33,7 @@ class ManagerController extends Controller
             'country_id' => 1,
             'phone' => $request->phone,
             'email' => $request->email,
+            'role' => 'manager',
             'password' => Hash::make($request->password),
         ]);
         session()->flash('succes', 'Successful registration');

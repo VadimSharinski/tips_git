@@ -1,9 +1,12 @@
 <?php
 
+use App\Http\Controllers\MainController;
 use App\Http\Controllers\ManagerController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\QrCodeController;
+use App\Http\Controllers\TipsController;
+use App\Http\Controllers\CardController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -25,8 +28,8 @@ Route::group(['namespace' => 'User'], function (){
 
     Route::get('/user-signin', [UserController::class, 'signinForm'])->name('user.signin');
 
-    Route::get('/employee-profile', [UserController::class, 'profile'])->name('user.profile');
-    Route::post('/employee-profile', [UserController::class, 'edit'])->name('user.edit');
+    Route::get('/user-profile', [UserController::class, 'profile'])->name('user.profile');
+    Route::post('/user-profile', [UserController::class, 'edit'])->name('user.edit');
 
 
 });
@@ -45,6 +48,9 @@ Route::group(['namespace' => 'Employee'], function (){
     Route::get('/employee-profile', [EmployeeController::class, 'profile'])->name('employee.profile');
     Route::post('/employee-profile', [EmployeeController::class, 'edit'])->name('employee.edit');
 
+    Route::get('/balance', [EmployeeController::class, 'balance'])->name('tips.balance');
+
+
 
 });
 
@@ -52,44 +58,42 @@ Route::group(['namespace' => 'Employee'], function (){
 Route::group(['namespace' => 'QrCodeController'], function (){
     Route::get('/qr-code', [QrCodeController::class, 'generateQrCode'])->name('qrcode.generate');
 
+});
+
+
+Route::group(['namespace' => 'TipsController'], function (){
+    Route::get('/send-tips', [TipsController::class, 'sendTipsForm'])->name('tips.sendTipsForm');
+    Route::post('/send-tips', [TipsController::class, 'sendTips'])->name('tips.sendTips');
+
+    Route::get('/withdraw-tips', [TipsController::class, 'withdrawtipsForm'])->name('tips.withdrawTipsForm');
+    Route::post('/withdraw-tips', [TipsController::class, 'withdrawtips'])->name('tips.withdrawTips');
+});
+
+Route::group(['namespace' => 'CardController'], function (){
+    Route::get('/add-card', [CardController::class, 'addCardForm'])->name('card.addCardForm');
+    Route::post('/add-card', [CardController::class, 'addCard'])->name('card.addCard');
 
 
 });
 
-
-Route::group(['namespace' => 'Qr'], function (){
-    Route::get('/manager', [ManagerController::class, 'index']);
-    Route::get('/logout', [ManagerController::class, 'logout'])->name('manager.logout');
-
-    Route::get('/manager-signup', [ManagerController::class, 'signupForm'])->name('manager.signupForm');
-    Route::post('/manager-signup', [ManagerController::class, 'signup'])->name('manager.signup');
-
-    Route::get('/manager-signin', [ManagerController::class, 'signinForm'])->name('manager.signinForm');
-    Route::post('/manager-signin', [ManagerController::class, 'signin'])->name('manager.signin');
-
-    Route::get('/manager-profile', [ManagerController::class, 'profile'])->name('manager.profile');
-    Route::post('/manager-profile', [ManagerController::class, 'edit'])->name('manager.edit');
+Route::get('/changeLocale/{locale}', [MainController::class, 'changeLocale'])->name('changeLocale');
 
 
+
+
+
+
+
+Route::get('/card', function () {
+    return view('card.card');
 });
 
-
-
-
-
-
-
-
-
-
-
-
-//Route::get('/', function () {
-//    return view('index');
-//});
-//Route::get('/index', function () {
-//    return view('index');
-//});
+Route::get('/', function () {
+    return view('index');
+});
+Route::get('/index', function () {
+    return view('landing');
+});
 Route::get('/dashboard-alternate', function () {
     return view('dashboard-alternate');
 });

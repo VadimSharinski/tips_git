@@ -17,16 +17,6 @@ class User extends Authenticatable
      *
      * @var array<int, string>
      */
-//    protected $fillable = [
-//        'surname',
-//        'name',
-//        'patronymic',
-//        'phone',
-//        'email',
-//        'itn',
-//        'goal',
-//        'password'
-//    ];
 
     protected $guarded = [];
     /**
@@ -47,4 +37,31 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function cashflows()
+    {
+        return $this->hasMany(CashFlow::class);
+    }
+
+    public function tips()
+    {
+        return $this->hasMany(Tips::class);
+    }
+
+    public function payments()
+    {
+        return $this->hasMany(Payment::class);
+    }
+
+    public function card()
+    {
+        return $this->hasOne(Card::class);
+    }
+
+    public function country()
+    {
+        return $this->belongsTo(Country::class);
+    }
+
+
 }

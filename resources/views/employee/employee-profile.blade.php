@@ -4,19 +4,19 @@
         <div class="page-content">
             <!--breadcrumb-->
             <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
-                <div class="breadcrumb-title pe-3">User Profile</div>
+                <div class="breadcrumb-title pe-3">@lang('main.user_profile')</div>
                 <div class="ps-3">
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb mb-0 p-0">
                             <li class="breadcrumb-item"><a href="javascript:;"><i class="bx bx-home-alt"></i></a>
                             </li>
-                            <li class="breadcrumb-item active" aria-current="page">User Profile</li>
+                            <li class="breadcrumb-item active" aria-current="page">@lang('main.user_profile')</li>
                         </ol>
                     </nav>
                 </div>
                 <div class="ms-auto">
                     <div class="btn-group">
-                        <button type="button" class="btn btn-primary">Settings</button>
+                        <button type="button" class="btn btn-primary">@lang('main.settings')</button>
                         <button type="button"
                                 class="btn btn-primary split-bg-primary dropdown-toggle dropdown-toggle-split"
                                 data-bs-toggle="dropdown"><span class="visually-hidden">Toggle Dropdown</span>
@@ -44,7 +44,7 @@
                                         <div class="mt-3">
                                             <h4>{{auth()->user()->first_name . ' ' . auth()->user()->last_name}}</h4>
                                             <p class="text-secondary mb-1">Employee</p>
-                                            <p class="text-muted font-size-sm">Address</p>
+                                            {{--                                            <p class="text-muted font-size-sm">{{  DB::table('countries')->select('name')->where('id', 10)->get(auth()->user()->country_id) }}</p>--}}
                                             {{--                                                    <button class="btn btn-primary">Follow</button>--}}
                                             {{--                                                    <button class="btn btn-outline-primary">Message</button>--}}
                                         </div>
@@ -69,7 +69,7 @@
                                     <div class="card-body">
                                         <div class="row mb-3">
                                             <div class="col-sm-3">
-                                                <h6 class="mb-0">First Name</h6>
+                                                <h6 class="mb-0">@lang('main.first_name')</h6>
                                             </div>
                                             <div class="col-sm-9 text-secondary">
                                                 <input type="text" class="form-control" name="first_name"
@@ -78,7 +78,7 @@
                                         </div>
                                         <div class="row mb-3">
                                             <div class="col-sm-3">
-                                                <h6 class="mb-0">Last Name</h6>
+                                                <h6 class="mb-0">@lang('main.last_name')</h6>
                                             </div>
                                             <div class="col-sm-9 text-secondary">
                                                 <input type="text" class="form-control" name="last_name"
@@ -94,28 +94,35 @@
                                         {{--                                                       value="{{auth()->user()->email}}"/>--}}
                                         {{--                                            </div>--}}
                                         {{--                                        </div>--}}
+
                                         <div class="row mb-3">
                                             <div class="col-sm-3">
-                                                <h6 class="mb-0">Phone</h6>
+                                                <h6 class="mb-0">@lang('main.country')</h6>
+                                            </div>
+                                            <div class="col-sm-9 text-secondary">
+                                                <select class="form-select" name="country_id" aria-label="Default select example">
+                                                    <option selected value="{{ $userCountry->id }}">{{ $userCountry->name }}</option>
+                                                    @foreach($countries as $country)
+                                                        <option value="{{ $country->id}}">{{ trans('main.' . $country->name) }}</option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        <div class="row mb-3">
+                                            <div class="col-sm-3">
+                                                <h6 class="mb-0">@lang('main.phone')</h6>
                                             </div>
                                             <div class="col-sm-9 text-secondary">
                                                 <input type="text" class="form-control" name="phone" maxlength="12"
                                                        value="{{auth()->user()->phone}}"/>
                                             </div>
                                         </div>
-                                        {{--                                        <div class="row mb-3">--}}
-                                        {{--                                            <div class="col-sm-3">--}}
-                                        {{--                                                <h6 class="mb-0">Country</h6>--}}
-                                        {{--                                            </div>--}}
-                                        {{--                                            <div class="col-sm-9 text-secondary">--}}
-                                        {{--                                                <input type="text" class="form-control" name="country"--}}
-                                        {{--                                                       value="{{auth()->user()->country}}"/>--}}
-                                        {{--                                            </div>--}}
-                                        {{--                                        </div>--}}
                                         <div class="row">
                                             <div class="col-sm-3"></div>
                                             <div class="col-sm-9 text-secondary">
-                                                <input type="submit" class="btn btn-primary px-4" value="Save Changes"/>
+                                                <input type="submit" class="btn btn-primary px-4"
+                                                       value="@lang('main.save_changes')"/>
                                             </div>
                                         </div>
                                     </div>
@@ -126,20 +133,6 @@
                 </div>
             </div>
         </div>
-    </div>
-
-
-    <div class="container mt-4">
-
-        <div class="card">
-            <div class="card-header">
-                <h2>Simple QR Code</h2>
-            </div>
-            <div class="card-body">
-                {{ QrCode::size(200)->generate('www.ru.ru')}}
-            </div>
-        </div>
-
     </div>
 @endsection
 

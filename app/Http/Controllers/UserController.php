@@ -29,6 +29,7 @@ class UserController extends Controller
             'firstName' => $request->firstName,
             'country' => $request->country,
             'email' => $request->email,
+            'role' => 'user',
             'password' => Hash::make($request->password),
         ]);
         session()->flash('succes', 'Successful registration');
